@@ -1,0 +1,125 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    margin: 20px;
+    background: #e4ebf0;
+    line-height: 1.6;
+}
+h1 {
+    text-align: center;
+    color: #4180ab;
+    animation: animacao-titulo 2s infinite ease-out;
+}
+.circulo {
+    width: 170px;             
+    height: 100px;
+    background: #bdd1de;      
+    border-radius: 47%;         
+    display: flex;             
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;  
+    animation: pulsar 2s infinite ease-out;    
+  }
+.faq-container {
+    width: 800px;
+    margin: 30px auto;
+    background: rgba(100,100, 100, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    animation: iniciar-faq .5s;
+}
+.faq-item {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.faq-pergunta {
+    cursor: pointer;
+    background: #4180ab;
+    color: #fff;
+    padding: 15px 40px;
+    position: relative;
+    font-weight: 700;
+    /* display: block; */
+}
+/* Remove o marcador padrão, permitinddo que adicione seu próprio marcador */
+.faq-pergunta::marker {
+    content: "";
+}
+/* Adiciona o ícone de + inicial */
+.faq-pergunta::before {
+    content: "+";
+    position: absolute;
+    inset-inline-end: 15px;
+    transition: transform 0.3 ease;
+    font-size: 1.2rem;
+}
+/* Muda o ícone para - quando estiver aberto */
+.faq-item[open] .faq-pergunta::before {
+    content: "-";
+    transform: rotate(180deg);
+}
+.faq-resposta {
+    padding: 15px;
+    background: #e4ebf0;
+    color: #4180ab;
+}
+.faq-item[open] .faq-resposta {
+    animation: abrir-faq 2s;
+}
+@keyframes pulsar{
+    0% {
+      transform: scale(1);
+      background: rgba(189,209,222, 1);
+    }
+    70% {
+      transform: scale(1.2);
+      background: rgba(164,205,233, 0.5);
+    }
+    100% {
+      transform: scale(1.3);
+      background: rgba(220,232,240, 0.2);
+    }
+  }
+@keyframes animacao-titulo {
+    0% {
+        transform: scale(1);
+        text-align: center;
+        opacity: 1;
+    }
+    60% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(2);
+        text-align: center;
+    }
+}
+@keyframes iniciar-faq {
+    from {
+        margin-top: -10%;
+    }
+    to {
+        margin-left: 22.5%;
+    }
+}
+@keyframes abrir-faq {
+    0% {
+        opacity: 0;
+        transform: translateX(-500px);
+        border-top-width: 0px;
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(0);
+        border-top-width: 0px;
+    }
+    100% {
+        border-top-width: 10px;
+    }
+  }
